@@ -7,7 +7,7 @@ public class MessageBroker {
     public MessageBroker(String appId, String appSecret, String token, MessageHandler handler) {
         WeixinConfig.APP_ID = appId;
         WeixinConfig.APP_SECRET = appSecret;
-        WeixinConfig.CURRENT_WECHAT_TOKEN = token;
+        WeixinConfig.LOCAL_TOKEN = token;
         this.handler = handler;
     }
 

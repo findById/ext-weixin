@@ -79,6 +79,9 @@ public class XMLUtil {
                 XmlElement a = field.getAnnotation(XmlElement.class);
                 field.setAccessible(true);
                 Object o = field.get(obj);
+                if (o == null) {
+                    continue;
+                }
 
                 xml.append('<');
                 xml.append((a != null && !"".equals(a.name())) ? a.name() : field.getName());

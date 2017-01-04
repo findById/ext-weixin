@@ -4,9 +4,13 @@ import org.cn.external.weixin.utils.XmlElement;
 
 @XmlElement(name = "item")
 public class Article {
+    @XmlElement(name = "Title")
     private String title;
+    @XmlElement(name = "Description")
     private String description;
+    @XmlElement(name = "PicUrl")
     private String picUrl;
+    @XmlElement(name = "Url")
     private String url;
 
     public String getTitle() {

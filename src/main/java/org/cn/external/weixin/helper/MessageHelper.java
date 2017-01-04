@@ -10,12 +10,13 @@ public class MessageHelper {
 
     public static String SEND_MESSAGE = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=%1$s";
 
-    public void sendMessage(String message) {
+    public String sendMessage(String message) {
         Response response = RpcEngine.post(SEND_MESSAGE, message);
         if (!response.isSuccess()) {
             System.out.println(response.toString());
-            return;
+            return null;
         }
+        return response.response;
     }
 
 }

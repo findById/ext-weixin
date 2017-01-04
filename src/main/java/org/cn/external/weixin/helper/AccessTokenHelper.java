@@ -16,17 +16,19 @@ public class AccessTokenHelper {
     /**
      * @see <a href="https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140183&token=&lang=zh_CN">获取access_token</a>
      */
-    public void getToken() {
+    public String getToken() {
         Response response = RpcEngine.get(String.format(GET_TOKEN, WeixinConfig.APP_ID, WeixinConfig.APP_SECRET));
         if (!response.isSuccess()) {
-            return;
+            System.out.println(response.toString());
+            return null;
         }
         AccessToken accessToken = JSON.parseObject(response.response, AccessToken.class);
         if (accessToken.getErrcode() != 0) {
-            getToken();
-            return;
+            System.out.println(accessToken.toString());
+            return null;
         }
         WeixinConfig.CURRENT_WECHAT_TOKEN = accessToken.getAccess_token();
+        return accessToken.getAccess_token();
     }
 
 }
